@@ -1,8 +1,7 @@
 apply plugin: 'com.android.library'
 
 android {
-  compileSdkVersion 26
-  buildToolsVersion '26.0.2'
+  compileSdkVersion 28
   resourcePrefix "__picker_"
 
   dexOptions {
@@ -10,30 +9,24 @@ android {
   }
   defaultConfig {
     minSdkVersion 14
-    targetSdkVersion 26
+    targetSdkVersion 28
+
+    versionCode 1
+    versionName "1.0.0"
   }
   lintOptions {
     abortOnError false
   }
 }
 ext {
-  supportLibVersion = "26.1.0"
+    supportLibVersion = "28.0.0"
+    glideVersion = "4.8.0"
 }
 dependencies {
-  compile "com.android.support:support-v4:$supportLibVersion"
-  compile "com.android.support:appcompat-v7:$supportLibVersion"
-  compile "com.android.support:design:$supportLibVersion"
-  compile "com.android.support:recyclerview-v7:$supportLibVersion"
-  compile "com.android.support:support-annotations:$supportLibVersion"
-  compile "com.github.bumptech.glide:glide:4.1.1"
-}
-
-apply plugin: 'com.novoda.bintray-release'
-publish {
-  userOrg = 'donglua'
-  groupId = 'me.iwf.photopicker'
-  artifactId = 'PhotoPicker'
-  publishVersion = '0.9.12'
-  desc = 'Photo Picker'
-  website = 'https://github.com/donglua/PhotoPicker'
+    implementation "com.android.support:support-v4:$supportLibVersion"
+    implementation "com.android.support:appcompat-v7:$supportLibVersion"
+    implementation "com.android.support:design:$supportLibVersion"
+    implementation "com.android.support:recyclerview-v7:$supportLibVersion"
+    implementation "com.android.support:support-annotations:$supportLibVersion"
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
 }
