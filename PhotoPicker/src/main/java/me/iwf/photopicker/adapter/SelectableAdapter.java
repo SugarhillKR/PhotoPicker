@@ -74,7 +74,11 @@ public abstract class SelectableAdapter<VH extends RecyclerView.ViewHolder>
 
 
   public List<Photo> getCurrentPhotos() {
-    return photoDirectories.get(currentDirectoryIndex).getPhotos();
+      try {
+          return photoDirectories.get(currentDirectoryIndex).getPhotos();
+      }catch (IndexOutOfBoundsException e){
+          e.printStackTrace();
+      }
   }
 
 
