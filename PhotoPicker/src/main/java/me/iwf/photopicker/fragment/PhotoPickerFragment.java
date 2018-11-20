@@ -175,6 +175,8 @@ public class PhotoPickerFragment extends Fragment {
 
         List<String> photos = photoGridAdapter.getCurrentPhotoPaths();
 
+        if(photos == null) return;
+
         ImagePagerFragment imagePagerFragment =
             ImagePagerFragment.newInstance(photos, index);
 

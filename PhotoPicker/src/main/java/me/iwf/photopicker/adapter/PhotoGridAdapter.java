@@ -94,6 +94,8 @@ public class PhotoGridAdapter extends SelectableAdapter<PhotoGridAdapter.PhotoVi
     if (getItemViewType(position) == ITEM_TYPE_PHOTO) {
 
       List<Photo> photos = getCurrentPhotos();
+      if(photos == null) return;
+
       final Photo photo;
 
       if (showCamera()) {
@@ -158,12 +160,16 @@ public class PhotoGridAdapter extends SelectableAdapter<PhotoGridAdapter.PhotoVi
 
 
   @Override public int getItemCount() {
-    int photosCount =
-        photoDirectories.size() == 0 ? 0 : getCurrentPhotos().size();
-    if (showCamera()) {
-      return photosCount + 1;
-    }
-    return photosCount;
+      List<Photo> currentPhotos = getCurrentPhotos();
+      if(currentPhotos == null) return 0;
+
+      int photosCount =
+              photoDirectories.size() == 0 ? 0 : currentPhotos.size();
+      if (showCamera()) {
+          return photosCount + 1;
+      }
+
+      return photosCount;
   }
 
 

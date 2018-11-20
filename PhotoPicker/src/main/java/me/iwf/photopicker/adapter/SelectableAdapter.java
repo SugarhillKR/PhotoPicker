@@ -78,16 +78,21 @@ public abstract class SelectableAdapter<VH extends RecyclerView.ViewHolder>
           return photoDirectories.get(currentDirectoryIndex).getPhotos();
       }catch (IndexOutOfBoundsException e){
           e.printStackTrace();
+          return null;
       }
   }
 
 
   public List<String> getCurrentPhotoPaths() {
-    List<String> currentPhotoPaths = new ArrayList<>(getCurrentPhotos().size());
-    for (Photo photo : getCurrentPhotos()) {
-      currentPhotoPaths.add(photo.getPath());
-    }
-    return currentPhotoPaths;
+      List<Photo> currentPhotos = getCurrentPhotos();
+      if(currentPhotos == null) return null;
+
+      List<String> currentPhotoPaths = new ArrayList<>(currentPhotos.size());
+      for (Photo photo : getCurrentPhotos()) {
+          currentPhotoPaths.add(photo.getPath());
+      }
+
+      return currentPhotoPaths;
   }
 
 
